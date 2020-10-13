@@ -144,11 +144,7 @@ struct HouseBoat
 {
     int numEngines, numRooms, numLifeJackets;
     float deckArea, boatLength;
-    struct ReturnToShore
-    {
-        int nautMilesRemaining = 1;
-        ReturnToShore( int n ) : nautMilesRemaining(n) {}
-    };
+    
 
     ReturnToShore getThereFunction( int curDistance );
     HouseBoat();
