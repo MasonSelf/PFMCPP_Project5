@@ -81,6 +81,11 @@ struct CamperVan
     void popCamperTop( bool isRaining = false, int outsideTemperature = 70 );
     int consumeGas( float gasRemaining, bool airConditioningOn );
     int addJerryCans(int curCans, int maxCans);
+
+    void printCans()
+    {
+        std::cout << "Current number of cans (via printCans) is now " << this->numJerryCans << std::endl; 
+    }
 };
 
 CamperVan::CamperVan(){}
@@ -319,6 +324,10 @@ struct WorkPlace
 
     void boastProductivity( bool atWorkPlace, int hoursWorked );
     int determineFireCodeCapacity( int length, int width, int floors );
+    void fireCodeInside( int length, int width, int floors )
+    {
+        std::cout << "Firecode capacity of this workplace (via fireCodeInside) is " << this->determineFireCodeCapacity(length, width, floors) << std::endl;
+    }
 };
 
 void WorkPlace::boastProductivity( bool atWorkPlace, int hoursWorked )
@@ -360,7 +369,9 @@ int main()
 
     std::cout << "Let's add one jerry can to our camper." << std::endl;
     sprinter.numJerryCans = sprinter.addJerryCans(sprinter.numJerryCans, 3);
-    std::cout << "Current number of cans is now " << sprinter.numJerryCans << std::endl;
+    std::cout << "Current number of cans is now " << sprinter.numJerryCans << std::endl; //orignal printout 
+    sprinter.printCans(); //nearly identical printout via 'this' in new member function
+
 
     HouseBoat raft;
     
@@ -369,6 +380,9 @@ int main()
 
     PlaceToCallHome adventureMobile;
     WorkPlace NYHeadquarters;
+
+    std::cout << "Firecode capacity of this workplace is " << NYHeadquarters.determineFireCodeCapacity(4, 5, 6) << std::endl; //printout via outside function
+    NYHeadquarters.fireCodeInside( 4, 5, 6 ); //nearly identical printout via 'this' in new member function
 
 
     std::cout << "good to go!" << std::endl;
