@@ -49,6 +49,7 @@ You don't have to do this, you can keep your current object name and just change
 
 
 #include <iostream>
+#include "LeakedObjectDetector.h"
 /*
  copied UDT 1:
  */
