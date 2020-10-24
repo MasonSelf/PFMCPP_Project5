@@ -218,13 +218,13 @@ void HouseBoat::scarePelicans( int crewSize, float crewVoiceVolume, float boatSp
 
 struct HouseBoatWrapper
 {
-    HouseBoatWrapper( HouseBoat* p ) : hbP( p ) {}
+    HouseBoatWrapper( HouseBoat* p ) : hbPointer( p ) {}
     ~HouseBoatWrapper()
     {
-        delete hbP;
-        hbP = nullptr;
+        delete hbPointer;
+        hbPointer = nullptr;
     }
-    HouseBoat* hbP = nullptr;
+    HouseBoat* hbPointer = nullptr;
 };
 
 /*
@@ -293,13 +293,13 @@ Building::~Building()
 
 struct BuildingWrapper
 {
-    BuildingWrapper( Building* p ) : buildingP( p ) {}
+    BuildingWrapper( Building* p ) : buildingPointer( p ) {}
     ~BuildingWrapper()
     {
-        delete buildingP;
-        buildingP = nullptr;
+        delete buildingPointer;
+        buildingPointer = nullptr;
     }
-    Building* buildingP = nullptr;
+    Building* buildingPointer = nullptr;
 };
 
 /*
@@ -341,13 +341,13 @@ PlaceToCallHome::~PlaceToCallHome()
 
 struct PlaceToCallHomeWrapper
 {
-    PlaceToCallHomeWrapper( PlaceToCallHome* p ) : placeP( p ) {}
+    PlaceToCallHomeWrapper( PlaceToCallHome* p ) : placePointer( p ) {}
     ~PlaceToCallHomeWrapper()
     {
-        delete placeP;
-        placeP = nullptr;
+        delete placePointer;
+        placePointer = nullptr;
     }
-    PlaceToCallHome* placeP = nullptr;
+    PlaceToCallHome* placePointer = nullptr;
 };
 /*
  new UDT 5:
@@ -392,13 +392,13 @@ WorkPlace::~WorkPlace()
 
 struct WorkPlaceWrapper
 {
-    WorkPlaceWrapper( WorkPlace* p ) : workP( p ) {}
+    WorkPlaceWrapper( WorkPlace* p ) : workPointer( p ) {}
     ~WorkPlaceWrapper()
     {
-        delete workP;
-        workP = nullptr;
+        delete workPointer;
+        workPointer = nullptr;
     }
-    WorkPlace* workP = nullptr;
+    WorkPlace* workPointer = nullptr;
 };
 
 /*
@@ -418,24 +418,24 @@ struct WorkPlaceWrapper
 
 int main()
 {
-    CamperVan sprinter;
+    CamperVanWrapper sprinterWrapper( new CamperVan() );
 
     std::cout << "Let's add one jerry can to our camper." << std::endl;
-    sprinter.numJerryCans = sprinter.addJerryCans(sprinter.numJerryCans, 3);
-    std::cout << "Current number of cans is now " << sprinter.numJerryCans << std::endl; //orignal printout 
-    sprinter.printCans(); //nearly identical printout via 'this' in new member function
+    sprinterWrapper.cvPointer->numJerryCans = sprinterWrapper.cvPointer->addJerryCans(sprinterWrapper.cvPointer->numJerryCans, 3);
+    std::cout << "Current number of cans is now " << sprinterWrapper.cvPointer->numJerryCans << std::endl; //orignal printout 
+    sprinterWrapper.cvPointer->printCans(); //nearly identical printout via 'this' in new member function
 
 
-    HouseBoat raft;
+    HouseBoatWrapper raftWrapper( new HouseBoat() );
     
-    raft.getThereFunction(5);
-    raft.getThereFunction(0);
+    raftWrapper.hbPointer->getThereFunction(5);
+    raftWrapper.hbPointer->getThereFunction(0);
 
-    PlaceToCallHome adventureMobile;
-    WorkPlace NYHeadquarters;
+    PlaceToCallHomeWrapper adventureMobileWrapper( new PlaceToCallHome() );
+    WorkPlaceWrapper NYHeadquartersWrapper( new WorkPlace() );
 
-    std::cout << "Firecode capacity of this workplace is " << NYHeadquarters.determineFireCodeCapacity(4, 5, 6) << std::endl; //printout via outside function
-    NYHeadquarters.fireCodeInside( 4, 5, 6 ); //nearly identical printout via 'this' in new member function
+    std::cout << "Firecode capacity of this workplace is " << NYHeadquartersWrapper.workPointer->determineFireCodeCapacity(4, 5, 6) << std::endl; //printout via outside function
+    NYHeadquartersWrapper.workPointer->fireCodeInside( 4, 5, 6 ); //nearly identical printout via 'this' in new member function
 
 
     std::cout << "good to go!" << std::endl;
