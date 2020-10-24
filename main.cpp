@@ -73,6 +73,8 @@ struct CamperVan
     {
         std::cout << "Current number of cans (via printCans) is now " << this->numJerryCans << std::endl; 
     }
+
+    JUCE_LEAK_DETECTOR(CamperVan)
 };
 
 CamperVan::CamperVan(){}
@@ -149,6 +151,8 @@ struct HouseBoat
     void moveBoat( float knotsperGallon, float windknots );
     void rockInWaves( int swell = 10 );
     void scarePelicans( int crewSize = 7, float crewVoiceVolume = 80.1f, float boatSpeed = 30.f);
+
+    JUCE_LEAK_DETECTOR(HouseBoat)
 };
 
 HouseBoat::HouseBoat() :
@@ -219,6 +223,8 @@ void HouseBoat::scarePelicans( int crewSize, float crewVoiceVolume, float boatSp
     void buildingCollapse( float age = 100, float earthquakeMag = 5.0f );
     void newRoof( float angle = 20.5f );
     int countWindows( int start, int total );
+
+    JUCE_LEAK_DETECTOR(Building)
 };
 
 void Building::remodel( float budget, bool committeAproval )
@@ -277,6 +283,8 @@ struct PlaceToCallHome
 
     int homeSquareFootage( int length, int width);
     void payRent( bool isRenter, int rent, float proRate );
+
+    JUCE_LEAK_DETECTOR(PlaceToCallHome)
 };
 
 int PlaceToCallHome::homeSquareFootage( int length, int width )
@@ -315,6 +323,8 @@ struct WorkPlace
     {
         std::cout << "Firecode capacity of this workplace (via fireCodeInside) is " << this->determineFireCodeCapacity(length, width, floors) << std::endl;
     }
+
+    JUCE_LEAK_DETECTOR(WorkPlace)
 };
 
 void WorkPlace::boastProductivity( bool atWorkPlace, int hoursWorked )
@@ -335,6 +345,8 @@ WorkPlace::~WorkPlace()
     WorkPlace::boastProductivity( true, 8 );
     std::cout << "Time to go home." << std::endl;
 }
+
+
 /*
  MAKE SURE YOU ARE NOT ON THE MASTER BRANCH
 
