@@ -49,6 +49,7 @@ You don't have to do this, you can keep your current object name and just change
 
 
 #include <iostream>
+#include "LeakedObjectDetector.h"
 /*
  copied UDT 1:
  */
@@ -72,6 +73,8 @@ struct CamperVan
     {
         std::cout << "Current number of cans (via printCans) is now " << this->numJerryCans << std::endl; 
     }
+
+    JUCE_LEAK_DETECTOR(CamperVan)
 };
 
 CamperVan::CamperVan(){}
@@ -127,6 +130,17 @@ int CamperVan::addJerryCans(int curCans, int maxCans)
     return curCans;
 }
 
+struct CamperVanWrapper
+{
+    CamperVanWrapper( CamperVan* p ) : cvPointer( p ) {} 
+    ~CamperVanWrapper()
+    {
+        delete cvPointer;
+        cvPointer = nullptr;
+    }  
+    CamperVan* cvPointer = nullptr;
+};
+
 /*
  copied UDT 2:
  */
@@ -148,6 +162,8 @@ struct HouseBoat
     void moveBoat( float knotsperGallon, float windknots );
     void rockInWaves( int swell = 10 );
     void scarePelicans( int crewSize = 7, float crewVoiceVolume = 80.1f, float boatSpeed = 30.f);
+
+    JUCE_LEAK_DETECTOR(HouseBoat)
 };
 
 HouseBoat::HouseBoat() :
@@ -200,6 +216,17 @@ void HouseBoat::scarePelicans( int crewSize, float crewVoiceVolume, float boatSp
         std::cout << "pelicans are tripping" << std::endl; 
 }
 
+struct HouseBoatWrapper
+{
+    HouseBoatWrapper( HouseBoat* p ) : hbPointer( p ) {}
+    ~HouseBoatWrapper()
+    {
+        delete hbPointer;
+        hbPointer = nullptr;
+    }
+    HouseBoat* hbPointer = nullptr;
+};
+
 /*
  copied UDT 3:
  */
@@ -218,6 +245,8 @@ void HouseBoat::scarePelicans( int crewSize, float crewVoiceVolume, float boatSp
     void buildingCollapse( float age = 100, float earthquakeMag = 5.0f );
     void newRoof( float angle = 20.5f );
     int countWindows( int start, int total );
+
+    JUCE_LEAK_DETECTOR(Building)
 };
 
 void Building::remodel( float budget, bool committeAproval )
@@ -262,6 +291,17 @@ Building::~Building()
     std::cout << "stay true, building. see you tomorrow" << std::endl;
 }
 
+struct BuildingWrapper
+{
+    BuildingWrapper( Building* p ) : buildingPointer( p ) {}
+    ~BuildingWrapper()
+    {
+        delete buildingPointer;
+        buildingPointer = nullptr;
+    }
+    Building* buildingPointer = nullptr;
+};
+
 /*
  new UDT 4:
  with 2 member functions
@@ -276,6 +316,8 @@ struct PlaceToCallHome
 
     int homeSquareFootage( int length, int width);
     void payRent( bool isRenter, int rent, float proRate );
+
+    JUCE_LEAK_DETECTOR(PlaceToCallHome)
 };
 
 int PlaceToCallHome::homeSquareFootage( int length, int width )
@@ -296,6 +338,17 @@ PlaceToCallHome::~PlaceToCallHome()
     std::cout << "don't forget to settle up on rent" << std::endl;
     PlaceToCallHome::payRent(true, 1500, .5f );
 }
+
+struct PlaceToCallHomeWrapper
+{
+    PlaceToCallHomeWrapper( PlaceToCallHome* p ) : placePointer( p ) {}
+    ~PlaceToCallHomeWrapper()
+    {
+        delete placePointer;
+        placePointer = nullptr;
+    }
+    PlaceToCallHome* placePointer = nullptr;
+};
 /*
  new UDT 5:
  with 2 member functions
@@ -314,6 +367,8 @@ struct WorkPlace
     {
         std::cout << "Firecode capacity of this workplace (via fireCodeInside) is " << this->determineFireCodeCapacity(length, width, floors) << std::endl;
     }
+
+    JUCE_LEAK_DETECTOR(WorkPlace)
 };
 
 void WorkPlace::boastProductivity( bool atWorkPlace, int hoursWorked )
@@ -334,6 +389,18 @@ WorkPlace::~WorkPlace()
     WorkPlace::boastProductivity( true, 8 );
     std::cout << "Time to go home." << std::endl;
 }
+
+struct WorkPlaceWrapper
+{
+    WorkPlaceWrapper( WorkPlace* p ) : workPointer( p ) {}
+    ~WorkPlaceWrapper()
+    {
+        delete workPointer;
+        workPointer = nullptr;
+    }
+    WorkPlace* workPointer = nullptr;
+};
+
 /*
  MAKE SURE YOU ARE NOT ON THE MASTER BRANCH
 
@@ -351,24 +418,24 @@ WorkPlace::~WorkPlace()
 
 int main()
 {
-    CamperVan sprinter;
+    CamperVanWrapper sprinterWrapper( new CamperVan() );
 
     std::cout << "Let's add one jerry can to our camper." << std::endl;
-    sprinter.numJerryCans = sprinter.addJerryCans(sprinter.numJerryCans, 3);
-    std::cout << "Current number of cans is now " << sprinter.numJerryCans << std::endl; //orignal printout 
-    sprinter.printCans(); //nearly identical printout via 'this' in new member function
+    sprinterWrapper.cvPointer->numJerryCans = sprinterWrapper.cvPointer->addJerryCans(sprinterWrapper.cvPointer->numJerryCans, 3);
+    std::cout << "Current number of cans is now " << sprinterWrapper.cvPointer->numJerryCans << std::endl; //orignal printout 
+    sprinterWrapper.cvPointer->printCans(); //nearly identical printout via 'this' in new member function
 
 
-    HouseBoat raft;
+    HouseBoatWrapper raftWrapper( new HouseBoat() );
     
-    raft.getThereFunction(5);
-    raft.getThereFunction(0);
+    raftWrapper.hbPointer->getThereFunction(5);
+    raftWrapper.hbPointer->getThereFunction(0);
 
-    PlaceToCallHome adventureMobile;
-    WorkPlace NYHeadquarters;
+    PlaceToCallHomeWrapper adventureMobileWrapper( new PlaceToCallHome() );
+    WorkPlaceWrapper NYHeadquartersWrapper( new WorkPlace() );
 
-    std::cout << "Firecode capacity of this workplace is " << NYHeadquarters.determineFireCodeCapacity(4, 5, 6) << std::endl; //printout via outside function
-    NYHeadquarters.fireCodeInside( 4, 5, 6 ); //nearly identical printout via 'this' in new member function
+    std::cout << "Firecode capacity of this workplace is " << NYHeadquartersWrapper.workPointer->determineFireCodeCapacity(4, 5, 6) << std::endl; //printout via outside function
+    NYHeadquartersWrapper.workPointer->fireCodeInside( 4, 5, 6 ); //nearly identical printout via 'this' in new member function
 
 
     std::cout << "good to go!" << std::endl;
