@@ -130,6 +130,17 @@ int CamperVan::addJerryCans(int curCans, int maxCans)
     return curCans;
 }
 
+struct CamperVanWrapper
+{
+    CamperVanWrapper( CamperVan* p ) : cvPointer( p ) {} 
+    ~CamperVanWrapper()
+    {
+        delete cvPointer;
+        cvPointer = nullptr;
+    }  
+    CamperVan* cvPointer = nullptr;
+};
+
 /*
  copied UDT 2:
  */
@@ -205,6 +216,17 @@ void HouseBoat::scarePelicans( int crewSize, float crewVoiceVolume, float boatSp
         std::cout << "pelicans are tripping" << std::endl; 
 }
 
+struct HouseBoatWrapper
+{
+    HouseBoatWrapper( HouseBoat* p ) : hbP( p ) {}
+    ~HouseBoatWrapper()
+    {
+        delete hbP;
+        hbP = nullptr;
+    }
+    HouseBoat* hbP = nullptr;
+};
+
 /*
  copied UDT 3:
  */
@@ -269,6 +291,17 @@ Building::~Building()
     std::cout << "stay true, building. see you tomorrow" << std::endl;
 }
 
+struct BuildingWrapper
+{
+    BuildingWrapper( Building* p ) : buildingP( p ) {}
+    ~BuildingWrapper()
+    {
+        delete buildingP;
+        buildingP = nullptr;
+    }
+    Building* buildingP = nullptr;
+};
+
 /*
  new UDT 4:
  with 2 member functions
@@ -305,6 +338,17 @@ PlaceToCallHome::~PlaceToCallHome()
     std::cout << "don't forget to settle up on rent" << std::endl;
     PlaceToCallHome::payRent(true, 1500, .5f );
 }
+
+struct PlaceToCallHomeWrapper
+{
+    PlaceToCallHomeWrapper( PlaceToCallHome* p ) : placeP( p ) {}
+    ~PlaceToCallHomeWrapper()
+    {
+        delete placeP;
+        placeP = nullptr;
+    }
+    PlaceToCallHome* placeP = nullptr;
+};
 /*
  new UDT 5:
  with 2 member functions
@@ -346,6 +390,16 @@ WorkPlace::~WorkPlace()
     std::cout << "Time to go home." << std::endl;
 }
 
+struct WorkPlaceWrapper
+{
+    WorkPlaceWrapper( WorkPlace* p ) : workP( p ) {}
+    ~WorkPlaceWrapper()
+    {
+        delete workP;
+        workP = nullptr;
+    }
+    WorkPlace* workP = nullptr;
+};
 
 /*
  MAKE SURE YOU ARE NOT ON THE MASTER BRANCH
