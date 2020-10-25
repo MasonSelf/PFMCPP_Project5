@@ -1,9 +1,10 @@
-
+#pragma once
 #include "CamperVan.cpp"
 #include "HouseBoat.cpp"
 #include "Building.cpp"
 #include "PlaceToCallHome.cpp"
 #include "WorkPlace.cpp"
+
 
 struct CamperVanWrapper
 {

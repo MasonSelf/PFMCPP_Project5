@@ -1,4 +1,6 @@
+#pragma once
 #include "LeakedObjectDetector.h"
+
 
 struct CamperVan
 {

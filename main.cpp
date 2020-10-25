@@ -32,7 +32,14 @@
 
 
 #include <iostream>
+#include "LeakedObjectDetector.h"
 #include "Wrappers.h"
+#include "CamperVan.h"
+#include "HouseBoat.h"
+#include "PlaceToCallHome.h"
+#include "WorkPlace.h"
+
+
 
 /*
  MAKE SURE YOU ARE NOT ON THE MASTER BRANCH

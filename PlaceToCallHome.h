@@ -1,5 +1,8 @@
-
+#pragma once
 #include "LeakedObjectDetector.h"
+// #include "CamperVan.h"
+// #include "HouseBoat.h"
+// #include "Building.h"
 
 
 struct PlaceToCallHome
