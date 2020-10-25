@@ -4,6 +4,7 @@
 #include "HouseBoat.h"
 #include "Building.h"
 
+
 struct WorkPlace
 {
     CamperVan mobileOffice;
@@ -19,3 +20,5 @@ struct WorkPlace
 
     JUCE_LEAK_DETECTOR(WorkPlace)
 };
+
+

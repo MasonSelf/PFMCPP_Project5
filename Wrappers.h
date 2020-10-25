@@ -1,10 +1,10 @@
 #pragma once
-#include "CamperVan.h"
-#include "HouseBoat.h"
-#include "Building.h"
-#include "PlaceToCallHome.h"
-#include "WorkPlace.h"
 
+struct CamperVan;
+struct HouseBoat;
+struct Building;
+struct PlaceToCallHome;
+struct WorkPlace;
 
 struct CamperVanWrapper
 {
@@ -40,4 +40,6 @@ struct WorkPlaceWrapper
     ~WorkPlaceWrapper();
     WorkPlace* workPointer = nullptr;
 };
+
+
 

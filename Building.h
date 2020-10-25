@@ -19,3 +19,5 @@ struct Building
     JUCE_LEAK_DETECTOR(Building)
 };
 
+ 
+ 

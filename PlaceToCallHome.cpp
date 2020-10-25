@@ -19,3 +19,4 @@ PlaceToCallHome::~PlaceToCallHome()
     std::cout << "don't forget to settle up on rent" << std::endl;
     PlaceToCallHome::payRent(true, 1500, .5f );
 }
+

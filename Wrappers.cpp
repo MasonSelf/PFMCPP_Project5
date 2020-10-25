@@ -1,4 +1,9 @@
 #include "Wrappers.h"
+#include "CamperVan.h"
+#include "HouseBoat.h"
+#include "Building.h"
+#include "PlaceToCallHome.h"
+#include "WorkPlace.h"
 
 CamperVanWrapper::CamperVanWrapper( CamperVan* p ) : cvPointer( p ) {} 
 
@@ -39,3 +44,5 @@ WorkPlaceWrapper::~WorkPlaceWrapper()
     delete workPointer;
     workPointer = nullptr;
 }
+
+

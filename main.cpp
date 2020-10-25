@@ -38,6 +38,7 @@
 #include "PlaceToCallHome.h"
 #include "WorkPlace.h"
 #include "Wrappers.h"
+#include "LeakedObjectDetector.h"
 
 
 

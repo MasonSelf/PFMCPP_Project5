@@ -18,3 +18,4 @@ struct PlaceToCallHome
 
     JUCE_LEAK_DETECTOR(PlaceToCallHome)
 };
+
