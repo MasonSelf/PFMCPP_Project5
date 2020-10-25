@@ -38,6 +38,7 @@ int Building::countWindows( int curCount, int total )
 }
  
 Building::Building(){}
+
 Building::~Building()
 {
     std::cout << "stay true, building. see you tomorrow" << std::endl;

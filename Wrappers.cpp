@@ -1,6 +1,7 @@
 #include "Wrappers.h"
 
 CamperVanWrapper::CamperVanWrapper( CamperVan* p ) : cvPointer( p ) {} 
+
 CamperVanWrapper::~CamperVanWrapper()
 {
     delete cvPointer;
@@ -8,6 +9,7 @@ CamperVanWrapper::~CamperVanWrapper()
 }  
 
 HouseBoatWrapper::HouseBoatWrapper( HouseBoat* p ) : hbPointer( p ) {}
+
 HouseBoatWrapper::~HouseBoatWrapper()
 {
     delete hbPointer;
@@ -15,6 +17,7 @@ HouseBoatWrapper::~HouseBoatWrapper()
 }
 
 BuildingWrapper::BuildingWrapper( Building* p ) : buildingPointer( p ) {}
+
 BuildingWrapper::~BuildingWrapper()
 {
     delete buildingPointer;
@@ -22,6 +25,7 @@ BuildingWrapper::~BuildingWrapper()
 }
 
 PlaceToCallHomeWrapper::PlaceToCallHomeWrapper( PlaceToCallHome* p ) : placePointer( p ) {}
+
 PlaceToCallHomeWrapper::~PlaceToCallHomeWrapper()
 {
     delete placePointer;
@@ -29,6 +33,7 @@ PlaceToCallHomeWrapper::~PlaceToCallHomeWrapper()
 }
 
 WorkPlaceWrapper::WorkPlaceWrapper( WorkPlace* p ) : workPointer( p ) {}
+
 WorkPlaceWrapper::~WorkPlaceWrapper()
 {
     delete workPointer;

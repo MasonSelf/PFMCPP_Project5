@@ -22,12 +22,4 @@ struct HouseBoat
     JUCE_LEAK_DETECTOR(HouseBoat)
 };
 
-HouseBoat::HouseBoat() :
-numEngines(2),
-numRooms(3),
-numLifeJackets(4),
-deckArea(44.4f),
-boatLength(22.f)
-{
 
-}

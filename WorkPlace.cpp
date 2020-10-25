@@ -8,11 +8,14 @@ void WorkPlace::boastProductivity( bool atWorkPlace, int hoursWorked )
     else 
         std::cout << "Out of the office today" << "\n";
 }
+
 int WorkPlace::determineFireCodeCapacity( int length, int width, int floors )
 {
     return ( length * width * floors );
 }
+
 WorkPlace::WorkPlace(){}
+
 WorkPlace::~WorkPlace()
 {
     std::cout << "Wow, ";

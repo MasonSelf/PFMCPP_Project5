@@ -32,12 +32,12 @@
 
 
 #include <iostream>
-#include "LeakedObjectDetector.h"
-#include "Wrappers.h"
+#include "Building.h"
 #include "CamperVan.h"
 #include "HouseBoat.h"
 #include "PlaceToCallHome.h"
 #include "WorkPlace.h"
+#include "Wrappers.h"
 
 
 

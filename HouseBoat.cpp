@@ -1,6 +1,16 @@
 #include <iostream>
 #include "HouseBoat.h"
 
+HouseBoat::HouseBoat() :
+numEngines(2),
+numRooms(3),
+numLifeJackets(4),
+deckArea(44.4f),
+boatLength(22.f)
+{
+
+}
+
 HouseBoat::~HouseBoat()
 {
     std::cout << "goodbye house boat. thanks for all the memories. now destroy your member variables..." << std::endl;
