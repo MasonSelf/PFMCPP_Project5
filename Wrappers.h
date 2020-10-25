@@ -7,56 +7,36 @@
 
 struct CamperVanWrapper
 {
-    CamperVanWrapper( CamperVan* p ) : cvPointer( p ) {} 
-    ~CamperVanWrapper()
-    {
-        delete cvPointer;
-        cvPointer = nullptr;
-    }  
+    CamperVanWrapper( CamperVan* p );
+    ~CamperVanWrapper();
     CamperVan* cvPointer = nullptr;
 };
 
 struct HouseBoatWrapper
 {
-    HouseBoatWrapper( HouseBoat* p ) : hbPointer( p ) {}
-    ~HouseBoatWrapper()
-    {
-        delete hbPointer;
-        hbPointer = nullptr;
-    }
+    HouseBoatWrapper( HouseBoat* p );
+    ~HouseBoatWrapper();
     HouseBoat* hbPointer = nullptr;
 };
 
 struct BuildingWrapper
 {
-    BuildingWrapper( Building* p ) : buildingPointer( p ) {}
-    ~BuildingWrapper()
-    {
-        delete buildingPointer;
-        buildingPointer = nullptr;
-    }
+    BuildingWrapper( Building* p );
+    ~BuildingWrapper();
     Building* buildingPointer = nullptr;
 };
 
 struct PlaceToCallHomeWrapper
 {
-    PlaceToCallHomeWrapper( PlaceToCallHome* p ) : placePointer( p ) {}
-    ~PlaceToCallHomeWrapper()
-    {
-        delete placePointer;
-        placePointer = nullptr;
-    }
+    PlaceToCallHomeWrapper( PlaceToCallHome* p );
+    ~PlaceToCallHomeWrapper();
     PlaceToCallHome* placePointer = nullptr;
 };
 
 struct WorkPlaceWrapper
 {
-    WorkPlaceWrapper( WorkPlace* p ) : workPointer( p ) {}
-    ~WorkPlaceWrapper()
-    {
-        delete workPointer;
-        workPointer = nullptr;
-    }
+    WorkPlaceWrapper( WorkPlace* p );
+    ~WorkPlaceWrapper();
     WorkPlace* workPointer = nullptr;
 };
 
