@@ -28,3 +28,4 @@ void WorkPlace::fireCodeInside( int length, int width, int floors )
     std::cout << "Firecode capacity of this workplace (via fireCodeInside) is " << this->determineFireCodeCapacity (length, width, floors) << std::endl;
 }
 
+
